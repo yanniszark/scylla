@@ -19,6 +19,8 @@ class ScyllaSetup:
         self._experimental = arguments.experimental
         self._authenticator = arguments.authenticator
         self._authorizer = arguments.authorizer
+        self._clusterName = arguments.clusterName
+        self._endpointSnitch = arguments.endpointSnitch
 
     def _run(self, *args, **kwargs):
         logging.info('running: {}'.format(args))
@@ -96,6 +98,12 @@ class ScyllaSetup:
 
         if self._experimental == "1":
             args += [ "--experimental=on" ]
+
+        if self._clusterName is not None:
+            args += ["--cluster-name %s" %self._clusterName]
+
+        if self._endpointSnitch is not None:
+            args += ["--endpoint-snitch %s" %self._endpointSnitch]
 
         args += ["--blocked-reactor-notify-ms 999999999"]
 

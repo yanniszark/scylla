@@ -18,4 +18,6 @@ def parse():
     parser.add_argument('--disable-version-check', default=False, action='store_true', dest='disable_housekeeping', help="Disable version check")
     parser.add_argument('--authenticator', default=None, dest='authenticator', help="Set authenticator class")
     parser.add_argument('--authorizer', default=None, dest='authorizer', help="Set authorizer class")
+    parser.add_argument('--cluster-name', default=None, dest='clusterName', help="Set cluster name")
+    parser.add_argument('--endpoint-snitch', default=None, dest='endpointSnitch', help="Set endpoint snitch")
     return parser.parse_args()
